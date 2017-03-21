@@ -26,6 +26,9 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
+" Display ctags in a pretty sidebar.
+Plugin 'majutsushi/tagbar'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -107,7 +110,11 @@ nnoremap <unique> <Leader>j :JSHint<CR>
 nnoremap <unique> <Leader>g :GoFmt<CR>
 
 " Terraform format, provided by vim-terraform plugin.
-nnoremap <unique> <Leader>t :TerraformFmt<CR>
+" nnoremap <unique> <Leader>t :TerraformFmt<CR>
+
+" Show/hide tagbar
+" https://github.com/majutsushi/tagbar
+nnoremap <unique> <Leader>t :TagbarToggle<CR>
 
 ""
 "" BEGIN Indent Python in the Google way.
