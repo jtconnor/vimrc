@@ -108,6 +108,9 @@ nnoremap <unique> <Leader>j :JSHint<CR>
 
 " Go format, which auto-formats go code.
 nnoremap <unique> <Leader>g :GoFmt<CR>
+" Use goimports instead of gofmt for go-formatting b/c goimports does
+" everything that gofmt does + canonicalizes imports.
+let g:go_fmt_command = "goimports"
 
 " Terraform format, provided by vim-terraform plugin.
 " nnoremap <unique> <Leader>t :TerraformFmt<CR>
