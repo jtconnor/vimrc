@@ -29,6 +29,9 @@ Plugin 'Glench/Vim-Jinja2-Syntax'
 " Display ctags in a pretty sidebar.
 Plugin 'majutsushi/tagbar'
 
+" Git tools
+Plugin 'tpope/vim-fugitive'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
