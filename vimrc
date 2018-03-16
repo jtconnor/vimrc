@@ -17,20 +17,20 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'walm/jshint.vim'
+"Plugin 'tpope/vim-surround'
+"Plugin 'walm/jshint.vim'
 Plugin 'nvie/vim-flake8'
-Plugin 'fatih/vim-go'
-Plugin 'shmay/vim-yaml'
-Plugin 'kylef/apiblueprint.vim'
-Plugin 'hashivim/vim-terraform'
-Plugin 'Glench/Vim-Jinja2-Syntax'
+"Plugin 'fatih/vim-go'
+"Plugin 'shmay/vim-yaml'
+"Plugin 'kylef/apiblueprint.vim'
+"Plugin 'hashivim/vim-terraform'
+"Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " Display ctags in a pretty sidebar.
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 
-" Git tools
-Plugin 'tpope/vim-fugitive'
+" solarized colorscheme
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,7 +50,6 @@ filetype plugin indent on    " required
 "" END Vundle
 ""
 
-
 ""
 "" James added the below.
 ""
@@ -69,8 +68,6 @@ set smartcase
 set backupdir=/tmp//
 set directory=/tmp//
 
-colorscheme soso
-
 " Map the Enter key (<CR>) so that pressing Enter toggles highlighting for the
 " current word on and off.
 let g:highlighting = 0
@@ -87,18 +84,8 @@ nnoremap <silent> <expr> <CR> Highlighting()
 
 let mapleader=","
 
-" (0 => line up under parenthesis on newline
-" W4 (with (0) => if open-paren is last char, indent four spaces
-" g1/h1 => public/private scope in c++ classes 1 space and members 2 space
-set cinoptions=(0W4g1h1
-autocmd BufRead,BufNewFile *.c,*.h,*.js set cindent
-
 " Disable beeping.
 set noeb vb t_vb=
-
-" Make vimgrep ignore node_modules.  Also makes tab-directory-completion ignore
-" node_modules, which is usually nice but sometimes mysterious and annoying :/
-:set wildignore=*/node_modules/*
 
 " NERDTree
 nnoremap <unique> <Leader>n :NERDTreeToggle<CR>
@@ -115,51 +102,8 @@ nnoremap <unique> <Leader>g :GoFmt<CR>
 " everything that gofmt does + canonicalizes imports.
 let g:go_fmt_command = "goimports"
 
-" Terraform format, provided by vim-terraform plugin.
-" nnoremap <unique> <Leader>t :TerraformFmt<CR>
-
-" Show/hide tagbar
-" https://github.com/majutsushi/tagbar
-nnoremap <unique> <Leader>t :TagbarToggle<CR>
-
-""
-"" BEGIN Indent Python in the Google way.
-""
-" Copied from https://google.github.io/styleguide/pyguide.html
-setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-
-let s:maxoff = 50 " maximum number of lines to look backwards.
-
-function GetGooglePythonIndent(lnum)
-
-  " Indent inside parens.
-  " Align with the open paren unless it is at the end of the line.
-  " E.g.
-  "   open_paren_not_at_EOL(100,
-  "                         (200,
-  "                          300),
-  "                         400)
-  "   open_paren_at_EOL(
-  "       100, 200, 300, 400)
-  call cursor(a:lnum, 1)
-  let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-        \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-        \ . " =~ '\\(Comment\\|String\\)$'")
-  if par_line > 0
-    call cursor(par_line, 1)
-    if par_col != col("$") - 1
-      return par_col
-    endif
-  endif
-
-  " Delegate the rest to the original function.
-  return GetPythonIndent(a:lnum)
-
-endfunction
-
-let pyindent_nested_paren="&sw*2"
-let pyindent_open_paren="&sw*2"
-""
-"" END Indent Python in the Google way.
-""
+if has('gui_running')
+    syntax enable
+    set background=light
+    colorscheme solarized
+endif
