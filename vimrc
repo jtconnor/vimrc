@@ -23,8 +23,12 @@ Plugin 'nvie/vim-flake8'
 "Plugin 'fatih/vim-go'
 "Plugin 'shmay/vim-yaml'
 "Plugin 'kylef/apiblueprint.vim'
-"Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-terraform'
 "Plugin 'Glench/Vim-Jinja2-Syntax'
+" javascript syntax highlighting
+Plugin 'pangloss/vim-javascript'
+" javascript format canonicalizer
+Plugin 'prettier/vim-prettier'
 
 " Display ctags in a pretty sidebar.
 "Plugin 'majutsushi/tagbar'
@@ -91,7 +95,7 @@ set noeb vb t_vb=
 nnoremap <unique> <Leader>n :NERDTreeToggle<CR>
 
 " Flake8, which checks python style.
-nnoremap <unique> <Leader>p :call Flake8()<CR>
+nnoremap <unique> <Leader>f :call Flake8()<CR>
 
 " JSHint, which checks javascript style and (some) syntax.
 nnoremap <unique> <Leader>j :JSHint<CR>
@@ -101,6 +105,9 @@ nnoremap <unique> <Leader>g :GoFmt<CR>
 " Use goimports instead of gofmt for go-formatting b/c goimports does
 " everything that gofmt does + canonicalizes imports.
 let g:go_fmt_command = "goimports"
+
+" Go format, which auto-formats go code.
+nnoremap <unique> <Leader>t :call terraform#fmt()<CR>
 
 if has('gui_running')
     syntax enable
