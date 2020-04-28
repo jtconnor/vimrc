@@ -1,58 +1,19 @@
-""
-"" BEGIN Vundle
-""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" vim-plug, per: https://github.com/junegunn/vim-plug"
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" My plugins here:
-Plugin 'tpope/vim-sensible'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'tpope/vim-surround'
-"Plugin 'walm/jshint.vim'
-Plugin 'nvie/vim-flake8'
-"Plugin 'fatih/vim-go'
-"Plugin 'shmay/vim-yaml'
-"Plugin 'kylef/apiblueprint.vim'
-Plugin 'hashivim/vim-terraform'
-"Plugin 'Glench/Vim-Jinja2-Syntax'
-" javascript syntax highlighting
-Plugin 'pangloss/vim-javascript'
-" javascript format canonicalizer
-Plugin 'prettier/vim-prettier'
-
-" Display ctags in a pretty sidebar.
-"Plugin 'majutsushi/tagbar'
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdtree'
+Plug 'nvie/vim-flake8'
+Plug 'hashivim/vim-terraform'
+Plug 'fatih/vim-go'
+Plug 'ervandew/supertab'
 
 " solarized colorscheme
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-""
-"" END Vundle
-""
+" Initialize plugin system
+call plug#end()
 
 ""
 "" James added the below.
@@ -106,7 +67,7 @@ nnoremap <unique> <Leader>g :GoFmt<CR>
 " everything that gofmt does + canonicalizes imports.
 let g:go_fmt_command = "goimports"
 
-" Go format, which auto-formats go code.
+" Terraform format, which auto-formats terraform config.
 nnoremap <unique> <Leader>t :call terraform#fmt()<CR>
 
 if has('gui_running')
