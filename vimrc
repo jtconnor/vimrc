@@ -3,7 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'nvie/vim-flake8'
 Plug 'hashivim/vim-terraform'
 Plug 'fatih/vim-go'
