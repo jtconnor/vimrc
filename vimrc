@@ -12,6 +12,12 @@ Plug 'ervandew/supertab'
 " solarized colorscheme
 Plug 'altercation/vim-colors-solarized'
 
+" find files
+Plug 'ctrlpvim/ctrlp.vim'
+
+" jump to file locations via letters
+Plug 'easymotion/vim-easymotion'
+
 " Initialize plugin system
 call plug#end()
 
@@ -66,6 +72,18 @@ let g:go_fmt_command = "goimports"
 
 " Terraform format, which auto-formats terraform config.
 nnoremap <unique> <Leader>t :call terraform#fmt()<CR>
+
+" Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" Find one char
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
+" Find two chars
+nmap <Leader>f <Plug>(easymotion-overwin-f2)
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 if has('gui_running')
     syntax enable
