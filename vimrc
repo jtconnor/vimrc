@@ -58,9 +58,6 @@ nnoremap <unique> <Leader>n :NERDTreeToggle<CR>
 " Flake8, which checks python style.
 nnoremap <unique> <Leader>f :call Flake8()<CR>
 
-" JSHint, which checks javascript style and (some) syntax.
-nnoremap <unique> <Leader>j :JSHint<CR>
-
 " Go format, which auto-formats go code.
 nnoremap <unique> <Leader>g :GoFmt<CR>
 " Use goimports instead of gofmt for go-formatting b/c goimports does
